@@ -9,7 +9,7 @@ function App() {
   return (
     <>
         <main className={`${bentoStyles.grid}`}>
-                <Panel rowBegin={2} rowEnd={5} colBegin={2} colEnd={5}>
+                <Panel rowBegin={2} rowEnd={5} colBegin={2} colEnd={6}>
                     <article>
                         <p>
                             Return
@@ -17,7 +17,7 @@ function App() {
                     </article>
                 </Panel>
 
-                <Panel rowBegin={5} rowEnd={15} colBegin={10} colEnd={22}>
+                <Panel rowBegin={2} rowEnd={15} colBegin={9} colEnd={25}>
                     <article>
                         <h2>
                             Highlight
@@ -25,7 +25,34 @@ function App() {
                     </article>
                 </Panel>
 
-                <Panel rowBegin={15} rowEnd={18} colBegin={10} colEnd={22}>
+                <Panel rowBegin={11} rowEnd={15} colBegin={2} colEnd={9}>
+                    <PanelRow>
+                        <PanelContent
+                        items={["Accessibility", "React"]}
+                        title="One"
+                        />
+                    </PanelRow>
+                </Panel>
+
+                <Panel rowBegin={2} rowEnd={11} colBegin={6} colEnd={9}>
+                    <PanelCol>
+                        <PanelContent
+                        items={["Accessibility", "React"]}
+                        title="Two"
+                        />
+                    </PanelCol>
+                </Panel>
+
+                <Panel rowBegin={5} rowEnd={11} colBegin={2} colEnd={6}>
+                    <PanelCol>
+                        <PanelContent
+                        items={["Accessibility", "React"]}
+                        title="three"
+                        />
+                    </PanelCol>
+                </Panel>
+
+                <Panel rowBegin={15} rowEnd={18} colBegin={2} colEnd={18}>
                     <PanelRow>
                         <PanelContent
                         items={["Accessibility", "React"]}
@@ -33,6 +60,42 @@ function App() {
                         >
                         </PanelContent>
                     </PanelRow>
+                </Panel>
+
+                <Panel rowBegin={15} rowEnd={18} colBegin={18} colEnd={29}>
+                    <PanelRow>
+                        <PanelContent
+                        items={["Accessibility", "React"]}
+                        title="four"
+                        />
+                    </PanelRow>
+                </Panel>
+
+                <Panel rowBegin={8} rowEnd={18} colBegin={29} colEnd={32}>
+                    <PanelCol>
+                        <PanelContent
+                        items={["Accessibility", "React"]}
+                        title="five"
+                        />
+                    </PanelCol>
+                </Panel>
+
+                <Panel rowBegin={8} rowEnd={15} colBegin={25} colEnd={29}>
+                    <PanelCol>
+                        <PanelContent
+                        items={["Accessibility", "React"]}
+                        title="SIx"
+                        />
+                    </PanelCol>
+                </Panel>
+
+                <Panel rowBegin={2} rowEnd={8} colBegin={25} colEnd={32}>
+                    <PanelCol>
+                        <PanelContent
+                        items={["Accessibility", "React"]}
+                        title="seven"
+                        />
+                    </PanelCol>
                 </Panel>
         </main>
     </>
