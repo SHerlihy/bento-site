@@ -1,9 +1,11 @@
 .panel_row {
     display: flex;
     flex-direction: row;
+    justify-content: space-evenly;
 }
 
 .panel_col {
     display: flex;
     flex-direction: column;
+    justify-content: space-evenly;
 }
