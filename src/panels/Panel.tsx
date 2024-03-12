@@ -14,7 +14,9 @@ export const Panel = (props: {
     }
     return (
         <section style={gridStyle}>
-            {props.children}
+            <div className={`${panelCss.card}`}>
+                {props.children}
+            </div>
         </section>
     )
 }
