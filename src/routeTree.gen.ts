@@ -16,15 +16,41 @@ import { Route as rootRoute } from './routes/__root'
 
 // Create Virtual Routes
 
-const AboutLazyImport = createFileRoute('/about')()
+const VelmaModeLazyImport = createFileRoute('/velmaMode')()
+const SherlihyDotComLazyImport = createFileRoute('/sherlihyDotCom')()
+const ResumeGraderLazyImport = createFileRoute('/resumeGrader')()
+const I2GroupLazyImport = createFileRoute('/i2Group')()
+const AuthServiceLazyImport = createFileRoute('/authService')()
 const IndexLazyImport = createFileRoute('/')()
 
 // Create/Update Routes
 
-const AboutLazyRoute = AboutLazyImport.update({
-  path: '/about',
+const VelmaModeLazyRoute = VelmaModeLazyImport.update({
+  path: '/velmaMode',
   getParentRoute: () => rootRoute,
-} as any).lazy(() => import('./routes/about.lazy').then((d) => d.Route))
+} as any).lazy(() => import('./routes/velmaMode.lazy').then((d) => d.Route))
+
+const SherlihyDotComLazyRoute = SherlihyDotComLazyImport.update({
+  path: '/sherlihyDotCom',
+  getParentRoute: () => rootRoute,
+} as any).lazy(() =>
+  import('./routes/sherlihyDotCom.lazy').then((d) => d.Route),
+)
+
+const ResumeGraderLazyRoute = ResumeGraderLazyImport.update({
+  path: '/resumeGrader',
+  getParentRoute: () => rootRoute,
+} as any).lazy(() => import('./routes/resumeGrader.lazy').then((d) => d.Route))
+
+const I2GroupLazyRoute = I2GroupLazyImport.update({
+  path: '/i2Group',
+  getParentRoute: () => rootRoute,
+} as any).lazy(() => import('./routes/i2Group.lazy').then((d) => d.Route))
+
+const AuthServiceLazyRoute = AuthServiceLazyImport.update({
+  path: '/authService',
+  getParentRoute: () => rootRoute,
+} as any).lazy(() => import('./routes/authService.lazy').then((d) => d.Route))
 
 const IndexLazyRoute = IndexLazyImport.update({
   path: '/',
@@ -39,8 +65,24 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexLazyImport
       parentRoute: typeof rootRoute
     }
-    '/about': {
-      preLoaderRoute: typeof AboutLazyImport
+    '/authService': {
+      preLoaderRoute: typeof AuthServiceLazyImport
+      parentRoute: typeof rootRoute
+    }
+    '/i2Group': {
+      preLoaderRoute: typeof I2GroupLazyImport
+      parentRoute: typeof rootRoute
+    }
+    '/resumeGrader': {
+      preLoaderRoute: typeof ResumeGraderLazyImport
+      parentRoute: typeof rootRoute
+    }
+    '/sherlihyDotCom': {
+      preLoaderRoute: typeof SherlihyDotComLazyImport
+      parentRoute: typeof rootRoute
+    }
+    '/velmaMode': {
+      preLoaderRoute: typeof VelmaModeLazyImport
       parentRoute: typeof rootRoute
     }
   }
@@ -48,6 +90,13 @@ declare module '@tanstack/react-router' {
 
 // Create and export the route tree
 
-export const routeTree = rootRoute.addChildren([IndexLazyRoute, AboutLazyRoute])
+export const routeTree = rootRoute.addChildren([
+  IndexLazyRoute,
+  AuthServiceLazyRoute,
+  I2GroupLazyRoute,
+  ResumeGraderLazyRoute,
+  SherlihyDotComLazyRoute,
+  VelmaModeLazyRoute,
+])
 
 /* prettier-ignore-end */
