@@ -1,3 +1,5 @@
+import {Link} from '@tanstack/react-router'
+
 import { ReactNode } from "react"
 import panelCss from "./panel.module.css"
 
@@ -6,6 +8,7 @@ export const Panel = (props: {
     rowEnd: number
     colBegin: number
     colEnd: number
+    to?: string
     children: ReactNode
 }) => {
     const gridStyle = {
@@ -15,7 +18,14 @@ export const Panel = (props: {
     return (
         <section style={gridStyle}>
             <div className={`${panelCss.card}`}>
-                {props.children}
+                {props.to &&
+                    <Link to={props.to}>
+                        {props.children}
+                    </Link>
+                }
+                {!props.to &&
+                    props.children
+                }
             </div>
         </section>
     )
