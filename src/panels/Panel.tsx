@@ -37,12 +37,18 @@ export const PanelContent = (props : {
 }) => {
     return (
         <>
-            {props.title && <h2>{props.title}</h2>}
+            {props.title && 
+                <div>
+                    <h2>{props.title}</h2>
+                </div>
+            }
+            <div>
             <ul>
             {props.items.map((item)=>{
                 return <li key={item}>{item}</li>
             })}
             </ul>
+            </div>
         </>
     )
 }
