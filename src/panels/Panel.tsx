@@ -15,11 +15,12 @@ export const Panel = (props: {
         gridRow: `${props.rowBegin}/${props.rowEnd}`,
         gridColumn: `${props.colBegin}/${props.colEnd}`
     }
+
     return (
         <section style={gridStyle}>
             <div className={`${panelCss.card}`}>
                 {props.to &&
-                    <Link to={props.to}>
+                    <Link to={props.to} className={`${panelCss.link}`}>
                         {props.children}
                     </Link>
                 }
@@ -38,12 +39,12 @@ export const PanelContent = (props : {
     return (
         <>
             {props.title && 
-                <div>
+                <div className={`${panelCss.title}`}>
                     <h2>{props.title}</h2>
                 </div>
             }
-            <div>
-            <ul>
+            <div className={`${panelCss.points}`}>
+            <ul className={`${panelCss.list_flex}`}>
             {props.items.map((item)=>{
                 return <li key={item}>{item}</li>
             })}
