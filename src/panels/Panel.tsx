@@ -2,6 +2,7 @@ import {Link} from '@tanstack/react-router'
 
 import { ReactNode } from "react"
 import panelCss from "./panel.module.css"
+import bentoStyles from "../shared/styles/bentoStyles.module.css"
 
 export const Panel = (props: {
     rowBegin: number
@@ -27,6 +28,54 @@ export const Panel = (props: {
                 {!props.to &&
                     props.children
                 }
+            </div>
+        </section>
+    )
+}
+
+export const PanelTrunk = (props: {
+    rowBegin: number
+    rowEnd: number
+    colBegin: number
+    colEnd: number
+    to: string
+    children: ReactNode
+}) => {
+    const gridStyle = {
+        gridRow: `${props.rowBegin}/${props.rowEnd}`,
+        gridColumn: `${props.colBegin}/${props.colEnd}`
+    }
+
+    return (
+        <section style={gridStyle}>
+            <div className={`${panelCss.card}`}>
+                    <Link to={props.to} className={`${panelCss.link}`}>
+                        {props.children}
+                    </Link>
+            </div>
+        </section>
+    )
+}
+
+export const PanelLeaf = (props: {
+    rowBegin: number
+    rowEnd: number
+    colBegin: number
+    colEnd: number
+    queryParam: string
+    children: ReactNode
+}) => {
+    const gridStyle = {
+        gridRow: `${props.rowBegin}/${props.rowEnd}`,
+        gridColumn: `${props.colBegin}/${props.colEnd}`
+    }
+
+    return (
+        <section style={gridStyle}>
+            <div className={`${panelCss.card}`}>
+                    <Link search={()=>({highlight: props.queryParam})} className={`${panelCss.link}`}>
+                        {props.children}
+                    </Link>
             </div>
         </section>
     )

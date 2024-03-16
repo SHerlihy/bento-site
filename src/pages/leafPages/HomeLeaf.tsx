@@ -1,6 +1,5 @@
-import { useState } from "react"
 import Highlight from "../home/Highlight"
-import { Panel, PanelCol, PanelRow } from "../../panels/Panel"
+import { Panel, PanelCol, PanelLeaf, PanelRow } from "../../panels/Panel"
 import SherlihyDotComContent from "../../shared/panels/SherlihyDotComContent"
 import I2Content from "../../shared/panels/I2Content"
 import ResumeGraderContent from "../../shared/panels/ResumeGrader"
@@ -8,25 +7,32 @@ import AuthServiceContent from "../../shared/panels/AuthService"
 import VelmaModeContent from "../../shared/panels/VelmaModeContent"
 
 import bentoStyles from "../../shared/styles/bentoStyles.module.css"
+import { Route } from "../../routes/index"
 
 function HomeLeaf() {
-    const [highlightContent, setHighlightContent] = useState("highlight")
+    const { highlight } = Route.useSearch()
 
   return (
         <main className={`${bentoStyles.grid}`}>
-                <Panel rowBegin={2} rowEnd={5} colBegin={2} colEnd={9}>
+                <PanelLeaf 
+                    rowBegin={2}
+                    rowEnd={5}
+                    colBegin={2}
+                    colEnd={9}
+                    queryParam="highlight"
+                >
                     <article>
                         <p>
                             Reset
                         </p>
                     </article>
-                </Panel>
+                </PanelLeaf>
 
                 <Panel rowBegin={2} rowEnd={15} colBegin={9} colEnd={25}>
                     <article>
                         {(
                             ()=>{
-                            switch (highlightContent) {
+                            switch (highlight) {
                                 case "velma":
                                 return <VelmaModeHighlight/>
                                 default:
@@ -37,15 +43,17 @@ function HomeLeaf() {
                     </article>
                 </Panel>
 
-                <Panel rowBegin={5} rowEnd={15} colBegin={2} colEnd={9}>
-                    <button 
-                        onClick={()=>{setHighlightContent("velma")}}
-                        className={`${bentoStyles.invis_button}`}>
+                <PanelLeaf 
+                    rowBegin={5} 
+                    rowEnd={15} 
+                    colBegin={2} 
+                    colEnd={9} 
+                    queryParam="velma"
+                >
                     <PanelCol>
                         <VelmaModeContent/>
                     </PanelCol>
-                    </button>
-                </Panel>
+                </PanelLeaf>
 
                 <Panel rowBegin={15} rowEnd={18} colBegin={2} colEnd={18} >
                     <PanelRow>

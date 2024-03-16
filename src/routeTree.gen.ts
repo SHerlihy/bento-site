@@ -13,6 +13,7 @@ import { createFileRoute } from '@tanstack/react-router'
 // Import Routes
 
 import { Route as rootRoute } from './routes/__root'
+import { Route as IndexImport } from './routes/index'
 
 // Create Virtual Routes
 
@@ -21,7 +22,6 @@ const SherlihyDotComLazyImport = createFileRoute('/sherlihyDotCom')()
 const ResumeGraderLazyImport = createFileRoute('/resumeGrader')()
 const I2GroupLazyImport = createFileRoute('/i2Group')()
 const AuthServiceLazyImport = createFileRoute('/authService')()
-const IndexLazyImport = createFileRoute('/')()
 
 // Create/Update Routes
 
@@ -52,7 +52,7 @@ const AuthServiceLazyRoute = AuthServiceLazyImport.update({
   getParentRoute: () => rootRoute,
 } as any).lazy(() => import('./routes/authService.lazy').then((d) => d.Route))
 
-const IndexLazyRoute = IndexLazyImport.update({
+const IndexRoute = IndexImport.update({
   path: '/',
   getParentRoute: () => rootRoute,
 } as any).lazy(() => import('./routes/index.lazy').then((d) => d.Route))
@@ -62,7 +62,7 @@ const IndexLazyRoute = IndexLazyImport.update({
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
     '/': {
-      preLoaderRoute: typeof IndexLazyImport
+      preLoaderRoute: typeof IndexImport
       parentRoute: typeof rootRoute
     }
     '/authService': {
@@ -91,7 +91,7 @@ declare module '@tanstack/react-router' {
 // Create and export the route tree
 
 export const routeTree = rootRoute.addChildren([
-  IndexLazyRoute,
+  IndexRoute,
   AuthServiceLazyRoute,
   I2GroupLazyRoute,
   ResumeGraderLazyRoute,
