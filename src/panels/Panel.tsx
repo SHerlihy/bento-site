@@ -2,7 +2,7 @@ import {Link} from '@tanstack/react-router'
 
 import { ReactNode } from "react"
 import panelCss from "./panel.module.css"
-import bentoStyles from "../shared/styles/bentoStyles.module.css"
+import { HomeQueryOptions } from '../routes'
 
 export const Panel = (props: {
     rowBegin: number
@@ -62,7 +62,7 @@ export const PanelLeaf = (props: {
     rowEnd: number
     colBegin: number
     colEnd: number
-    queryParam: string
+    queryParam: HomeQueryOptions
     children: ReactNode
 }) => {
     const gridStyle = {

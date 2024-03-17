@@ -1,4 +1,5 @@
 import HomeHighlightCss from "./HomeHighlight.module.css"
+import highlightCss from "./Highlight.module.css"
 
 const HomeHighlight = () => {
     return (
@@ -10,9 +11,11 @@ const HomeHighlight = () => {
             </div>
         </div>
         </div>
+            <div className={`${highlightCss.container_content}`}>
             <p>
-                Welcome, here I reflect on projects I have worked on. The purpose of these reflections is to attribute my progression and learning to tangible artifacts.
+                Welcome, here I reflect on projects I have worked on.
             </p>
+            </div>
     </>
     )
 }

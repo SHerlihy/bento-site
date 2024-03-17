@@ -11,6 +11,7 @@ import VelmaModeHighlight from "../../highlights/VelmaModeHighlight"
 import I2GroupHighlight from "../../highlights/I2GroupHighlight"
 import AuthServiceHighlight from "../../highlights/AuthService"
 import HomeHighlight from "../../highlights/HomeHighlight"
+import ComingSoonHighlight from "../../highlights/ComingSoonHighlight"
 
 function HomeLeaf() {
     const { highlight } = Route.useSearch()
@@ -32,7 +33,7 @@ function HomeLeaf() {
                 </PanelLeaf>
 
                 <Panel rowBegin={2} rowEnd={15} colBegin={9} colEnd={25}>
-                    <article>
+                    <PanelRow>
                         {(
                             ()=>{
                             switch (highlight) {
@@ -42,12 +43,14 @@ function HomeLeaf() {
                                 return <I2GroupHighlight/>
                                 case "authService":
                                 return <AuthServiceHighlight/>
-                                default:
+                                case "highlight":
                                 return <HomeHighlight/>
+                                default:
+                                return <ComingSoonHighlight/>
                             }
                             }
                         )()}
-                    </article>
+                    </PanelRow>
                 </Panel>
 
                 <PanelLeaf 

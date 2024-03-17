@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router"
 
-type HomeQueryOptions = "highlight" | "velma" | "i2" | "authService"
+export type HomeQueryOptions = "highlight" | "velma" | "i2" | "authService"
 
 type ProductSearch = {
     highlight: HomeQueryOptions
