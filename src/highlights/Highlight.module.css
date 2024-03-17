@@ -1,0 +1,9 @@
+.container_image {
+    position: relative;
+    height: 350px;
+    width: 350px;
+}
+
+.img {
+    position: absolute;
+}

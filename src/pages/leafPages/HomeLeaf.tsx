@@ -1,4 +1,3 @@
-import Highlight from "../home/Highlight"
 import { Panel, PanelCol, PanelLeaf, PanelRow } from "../../panels/Panel"
 import SherlihyDotComContent from "../../shared/panels/SherlihyDotComContent"
 import I2Content from "../../shared/panels/I2Content"
@@ -8,6 +7,10 @@ import VelmaModeContent from "../../shared/panels/VelmaModeContent"
 
 import bentoStyles from "../../shared/styles/bentoStyles.module.css"
 import { Route } from "../../routes/index"
+import VelmaModeHighlight from "../../highlights/VelmaModeHighlight"
+import I2GroupHighlight from "../../highlights/I2GroupHighlight"
+import AuthServiceHighlight from "../../highlights/AuthService"
+import HomeHighlight from "../../highlights/HomeHighlight"
 
 function HomeLeaf() {
     const { highlight } = Route.useSearch()
@@ -35,8 +38,12 @@ function HomeLeaf() {
                             switch (highlight) {
                                 case "velma":
                                 return <VelmaModeHighlight/>
+                                case "i2":
+                                return <I2GroupHighlight/>
+                                case "authService":
+                                return <AuthServiceHighlight/>
                                 default:
-                                return <Highlight/>
+                                return <HomeHighlight/>
                             }
                             }
                         )()}
@@ -55,39 +62,55 @@ function HomeLeaf() {
                     </PanelCol>
                 </PanelLeaf>
 
-                <Panel rowBegin={15} rowEnd={18} colBegin={2} colEnd={18} >
+                <PanelLeaf
+                    rowBegin={15} 
+                    rowEnd={18} 
+                    colBegin={2} 
+                    colEnd={18} 
+                    queryParam="sherlihyDotCom"
+                >
                     <PanelRow>
                         <SherlihyDotComContent/>
                     </PanelRow>
-                </Panel>
+                </PanelLeaf>
 
-                <Panel rowBegin={15} rowEnd={18} colBegin={18} colEnd={32}>
+                <PanelLeaf 
+                    rowBegin={15} 
+                    rowEnd={18} 
+                    colBegin={18} 
+                    colEnd={32}
+                    queryParam="i2"
+                >
                     <PanelRow>
                         <I2Content/>
                     </PanelRow>
-                </Panel>
+                </PanelLeaf>
 
-                <Panel rowBegin={8} rowEnd={15} colBegin={25} colEnd={32}>
+                <PanelLeaf 
+                    rowBegin={8} 
+                    rowEnd={15} 
+                    colBegin={25} 
+                    colEnd={32}
+                    queryParam="resumeGrader"
+                >
                     <PanelCol>
                         <ResumeGraderContent/>
                     </PanelCol>
-                </Panel>
+                </PanelLeaf>
 
-                <Panel rowBegin={2} rowEnd={8} colBegin={25} colEnd={32}>
+                <PanelLeaf
+                    rowBegin={2} 
+                    rowEnd={8} 
+                    colBegin={25} 
+                    colEnd={32}
+                    queryParam="authService"
+                >
                     <PanelCol>
                         <AuthServiceContent/>
                     </PanelCol>
-                </Panel>
+                </PanelLeaf>
         </main>
   )
-}
-
-function VelmaModeHighlight(){
-    return (
-        <p>
-            Velma
-        </p>
-    )
 }
 
 export default HomeLeaf
